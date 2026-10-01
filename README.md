@@ -83,3 +83,37 @@ py optuna_tune.py        # Hyperparameter search (~55 min)
 py preprocess.py         # Apply winning preprocessing
 py slice_bags.py         # Slice into patches
 py train_mil.py          # Train model (~2.3 hours)
+
+## Environment Setup
+
+### Hardware
+
+- **GPU**: CUDA-capable, ≥6GB VRAM (tested on RTX 3070 Laptop, 8GB)
+- **Disk**: ~50GB free (raw datasets ~15GB, preprocessed + patches ~25GB, model checkpoints <1GB)
+- **RAM**: 16GB minimum
+
+### Software
+
+- Python 3.11.9
+- CUDA 12.6 (or 11.8/12.1 — adjust wheel URL accordingly)
+- PyTorch 2.x with CUDA support
+
+### Installation
+
+# Install PyTorch with CUDA (pick the wheel matching your driver)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+
+# Install remaining dependencies
+pip install opencv-python numpy pandas scikit-learn tqdm optuna
+
+### Datasets
+
+APTOS 2019 can be downloaded from Kaggle after accepting competition rules
+https://www.kaggle.com/competitions/aptos2019-blindness-detection/overview
+Extract to datasets/aptos
+
+Messidor-2 can be downloaded from the ADCIS website after requesting access
+https://www.adcis.net/en/third-party/messidor2/
+The labels can be downloaded from Kaggle
+https://www.kaggle.com/datasets/mariaherrerot/messidor2preprocess
+Extract to datasets/Messidor-2
